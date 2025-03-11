@@ -1,8 +1,8 @@
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
 
-SRCS = ./src/main.c ./src/check_errors.c ./src/check_map_validity.c
+SRCS = ./src/main.c ./src/check_errors.c ./src/check_map_validity.c src/map_utils.c
 OBJS = $(SRCS:.c=.o)
 
 LIB1 = ./include/libft/libft.a

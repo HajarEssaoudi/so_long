@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 00:32:09 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/11 05:04:17 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/11 18:09:21 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,13 @@ int main(int ac, char **av)
 		print_error(1);
 	if(!check_map_name(map))
 		print_error(2);
-	fd = open(map, O_RDONLY);
+	fd = open(map,  O_RDONLY);
 	if(fd == -1)
 	{
 		ft_putstr_fd("open failed\n", 2);
 		exit(1);
 	}
-	if(check_map_validity(fd))
-	{
-		
-	}
+	int height = check_map_validity(fd);
+	ft_printf("%d\n", height);
 	return(0);
 }
