@@ -1,38 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   check_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/28 20:28:15 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/13 02:08:19 by hes-saou         ###   ########.fr       */
+/*   Created: 2025/03/11 17:09:18 by root              #+#    #+#             */
+/*   Updated: 2025/03/13 02:09:37 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-char	*ft_substr(char *s, unsigned int start, size_t len)
+size_t	ft_strlen_map(const char *s)
 {
-	char			*p;
-	unsigned int	i;
-	size_t			j;
+	int	i;
 
 	i = 0;
-	j = start;
-	if (!s || start > ft_strlen(s))
-		return (ft_strdup(""));
-	if (start + len > ft_strlen(s))
-		len = ft_strlen(s) - start;
-	p = (char *)malloc(len + 1);
-	if (!p)
-		return (NULL);
-	while (s[j] && j < start + len)
-	{
-		p[i] = s[j];
+	while (s[i] && s[i] != '\n')
 		i++;
-		j++;
+	return (i);
+}
+
+int	count_lines(char *map)
+{
+	char	*line;
+	int		count;
+	int		fd;
+
+	count = 0;
+	fd = open(map, O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstr_fd("open failed\n", 2);
+		exit(1);
 	}
-	p[i] = '\0';
-	return (p);
+	line = get_next_line(fd);
+	while (line)
+	{
+		count++;
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (count);
 }

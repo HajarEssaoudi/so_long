@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/26 21:33:46 by root              #+#    #+#             */
-/*   Updated: 2025/03/11 04:54:30 by hes-saou         ###   ########.fr       */
+/*   Created: 2025/03/11 23:46:34 by hes-saou          #+#    #+#             */
+/*   Updated: 2025/03/13 00:32:20 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
 static char	*read_to_remainder(int fd, char *remainder)
 {
@@ -21,13 +21,13 @@ static char	*read_to_remainder(int fd, char *remainder)
 	buffer = malloc((size_t)BUFFER_SIZE + 1);
 	if (!buffer)
 		return (NULL);
-	while (!ft_strchr(remainder, '\n'))
+	while (!ft_strchr_gnl(remainder, '\n'))
 	{
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 		if (bytes_read <= 0)
 			break ;
 		buffer[bytes_read] = '\0';
-		temp = ft_strjoin(remainder, buffer);
+		temp = ft_strjoin_gnl(remainder, buffer);
 		if (!temp)
 			return (NULL);
 		free(remainder);
@@ -51,11 +51,11 @@ static char	*extract_line(char **remainder)
 
 	if (!remainder || !*remainder)
 		return (NULL);
-	newline = ft_strchr(*remainder, '\n');
+	newline = ft_strchr_gnl(*remainder, '\n');
 	if (newline)
 	{
-		line = ft_substr(*remainder, 0, newline - *remainder + 1);
-		temp = ft_strdup(newline + 1);
+		line = ft_substr_gnl(*remainder, 0, newline - *remainder + 1);
+		temp = ft_strdup_gnl(newline + 1);
 		if (!line || !temp)
 		{
 			free_remainder(remainder);
@@ -66,7 +66,7 @@ static char	*extract_line(char **remainder)
 	}
 	else
 	{
-		line = ft_strdup(*remainder);
+		line = ft_strdup_gnl(*remainder);
 		free_remainder(remainder);
 	}
 	return (line);
@@ -89,15 +89,3 @@ char	*get_next_line(int fd)
 	line = extract_line(&remainder);
 	return (line);
 }
-
-// int main()
-// {
-// 	int fd = open("map1.ber", O_RDONLY);
-// 	char *Line = get_next_line(fd);
-// 	while(Line)
-// 	{
-// 		printf("%s", Line);
-// 		Line = get_next_line(fd);
-// 	}
-// 	return(0);
-// }

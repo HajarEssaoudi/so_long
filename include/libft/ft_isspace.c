@@ -1,28 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/11 17:09:18 by root              #+#    #+#             */
-/*   Updated: 2025/03/11 17:21:41 by root             ###   ########.fr       */
+/*   Created: 2025/03/12 01:43:21 by hes-saou          #+#    #+#             */
+/*   Updated: 2025/03/12 01:43:24 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
-
-int count_height(int fd)
+int	ft_isspace(int c)
 {
-	char    *line;
-	int     count;
-
-	count = 0;
-	line = get_next_line(fd);
-	while(line)
-	{
-		++count;
-		line = get_next_line(fd);
-	}
-	return (count);
+	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' || c == '\v'
+		|| c == '\f');
 }
