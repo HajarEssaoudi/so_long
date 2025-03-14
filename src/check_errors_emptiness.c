@@ -6,19 +6,25 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 01:05:24 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/13 02:12:12 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/14 01:27:24 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_map_name(char *map)
+int	check_map_ext(char *map)
 {
 	char	*extention;
+	char	*name;
 
 	extention = ft_strrchr(map, '.');
+	name = ft_strchr(map, '/');
 	if (extention && ft_strcmp(extention, ".ber") == 0)
+	{
+		if (!name || name + 1 == extention)
+			return (0);
 		return (1);
+	}
 	return (0);
 }
 
@@ -37,7 +43,7 @@ static int	is_line_empty(char *line)
 
 static int	check_last_line(char **map)
 {
-	int (i), last_index;
+	int(i), last_index;
 	i = 0;
 	while (map[i])
 		i++;
@@ -47,20 +53,20 @@ static int	check_last_line(char **map)
 	return (0);
 }
 
-int	check_empty_map(char **map)
+int	check_empty_map(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	if (map == NULL || map[0] == NULL)
+	if (game->map == NULL || game->map[0] == NULL)
 		return (1);
-	while (map[i])
+	while (game->map[i])
 	{
-		if (is_line_empty(map[i]) == 1)
-			return (1);
+		if (is_line_empty(game->map[i]) == 1)
+			return (free_map(game), 1);
 		i++;
 	}
-	if (check_last_line(map) == 1)
-		return (1);
+	if (check_last_line(game->map) == 1)
+		return (free_map(game), 1);
 	return (0);
 }
