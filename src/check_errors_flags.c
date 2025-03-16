@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 02:01:39 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/13 02:11:44 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/15 21:31:51 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ void	print_error(int flag)
 	if (flag == 9)
 		ft_putstr_fd("Map can only contain: C (collectible), P (player), E (exit), 1 (wall), 0 (empty).\n", 2);
 	if (flag == 10)
-		ft_putstr_fd("Player must not be surrounded by walls.\n", 2);
-	if (flag == 11)
-		ft_putstr_fd("Exit must be accessible.\n", 2);
+		ft_putstr_fd("there is no valid path in the map.\n", 2);
 }

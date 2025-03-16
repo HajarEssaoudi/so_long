@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 17:09:18 by root              #+#    #+#             */
-/*   Updated: 2025/03/14 01:14:02 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/16 11:08:57 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,30 @@ size_t	ft_strlen_map(const char *s)
 	while (s[i] && s[i] != '\n')
 		i++;
 	return (i);
+}
+
+char	*ft_strdup_map(char *s)
+{
+	char	*ss;
+	size_t	len;
+	size_t	i;
+
+	i = 0;
+	len = 0;
+	if (!s)
+		return (NULL);
+	while (s[len] && s[i] != '\n')
+		len++;
+	ss = (char *)malloc(len + 1);
+	if (!ss)
+		return (NULL);
+	while (i < len)
+	{
+		ss[i] = s[i];
+		i++;
+	}
+	ss[i] = '\0';
+	return (ss);
 }
 
 int	count_lines(t_game *game)
@@ -44,4 +68,17 @@ int	count_lines(t_game *game)
 	}
 	close(fd);
 	return (count);
+}
+
+void	flood_fill(char **tab, int x, int y, char to_fill)
+{
+	if (tab[y][x] == '1'
+		|| tab[y][x] == 'E'
+		|| tab[y][x] == 'F')
+		return;
+	tab[y][x] = 'F';
+	flood_fill(tab, (x - 1), y, to_fill);
+	flood_fill(tab, (x + 1), y, to_fill);
+	flood_fill(tab, x, (y - 1), to_fill);
+	flood_fill(tab, x, (y + 1), to_fill);
 }

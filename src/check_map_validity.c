@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 05:04:46 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/14 02:15:05 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/16 11:17:44 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,7 @@ int	check_map_validity(t_game *game)
 		return (print_error(8), 0);
 	if (not_element(game) == 1)
 		return (print_error(9), 0);
-	// if (p_not_accessed(game->map) == 1)
-	// 	return (print_error(10), 0);
-	// if (e_not_accessed(game->map) == 1)
-	// 	return (print_error(11), 0);
-	// if (c_not_accessed(game->map) == 1)
-	// 	return (print_error(12), 0);
+	if (map_not_accessible(game) == 1)
+		return (print_error(10), 0);
 	return (1);
 }

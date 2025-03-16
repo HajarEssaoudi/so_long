@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 00:34:12 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/14 01:58:57 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/16 11:09:16 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ typedef struct s_game
 	void	*window;
 	int		map_height;
 	int		map_width;
+	int		x;
+	int		y;
+	int		move;
+	int		count_collectibles;
 	void	*collectible_img;
 	void	*player_img;
 	void	*exit_img;
@@ -55,7 +59,11 @@ typedef struct s_game
 // utils functions
 char		*get_next_line(int fd);
 size_t		ft_strlen_map(const char *s);
+char		*ft_strdup_map(char *s);
 void		free_map(t_game *game);
+void		flood_fill(char **tab, int x, int y, char to_fill);
+int			count_collect(char **map);
+void		player_position(t_game *game);
 // error functions
 void		print_error(int flag);
 // check map
@@ -70,10 +78,15 @@ int			c_not_found(t_game *game);
 int			p_not_found(t_game *game);
 int			e_not_found(t_game *game);
 int			not_element(t_game *game);
-// int			p_not_accessed(char **map);
-// int			e_not_accessed(char **map);
-// int			c_not_accessed(char **map);
+int			map_not_accessible(t_game *game);
 int			check_map_validity(t_game *game);
 // render map
+void		read_xpm(t_game *game);
 void		render_map(t_game *game);
+// moves
+void		move_player_up(t_game *game);
+void		move_player_down(t_game *game);
+void		move_player_left(t_game *game);
+void		move_player_right(t_game *game);
+int			close_window(t_game *game);
 #endif

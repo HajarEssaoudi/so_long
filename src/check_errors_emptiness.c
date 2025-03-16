@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 01:05:24 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/14 01:27:24 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/16 13:21:00 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	check_empty_map(t_game *game)
 
 	i = 0;
 	if (game->map == NULL || game->map[0] == NULL)
-		return (1);
+		return (free_map(game), 1);
 	while (game->map[i])
 	{
 		if (is_line_empty(game->map[i]) == 1)

@@ -1,13 +1,13 @@
 NAME = so_long
 CC = gcc
-CFLAGS = -Wextra -Wall -Werror
+CFLAGS =
 
 SRC_PATH = src
 OBJ_PATH = obj
 
 SRC_NAME = main.c check_errors_emptiness.c check_errors_flags.c check_errors_rectangulaire.c	\
 			check_errors_walls.c check_map_utils.c check_map_validity.c gnl/get_next_line.c		\
-			gnl/get_next_line_utils.c check_errors_map_elements.c check_map_accessibility.c render_map.c
+			gnl/get_next_line_utils.c check_errors_map_elements.c check_map_accessibility.c render_map.c moves.c
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRCS = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJS = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
