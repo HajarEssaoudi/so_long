@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 00:34:12 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/16 11:09:16 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/17 02:34:58 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int			check_map_validity(t_game *game);
 void		read_xpm(t_game *game);
 void		render_map(t_game *game);
 // moves
+void		finish_game_one(t_game *game, int x, int y, int flag);
+void		finish_game_two(t_game *game, int x, int y, int flag);
 void		move_player_up(t_game *game);
 void		move_player_down(t_game *game);
 void		move_player_left(t_game *game);

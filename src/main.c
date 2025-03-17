@@ -6,14 +6,14 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 00:32:09 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/16 13:25:11 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/17 01:50:06 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-# include <X11/keysym.h>
+#include <X11/keysym.h>
 
-int	close_window(t_game	*game)
+int	close_window(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->player_img);
 	mlx_destroy_image(game->mlx, game->collectible_img);
@@ -25,7 +25,7 @@ int	close_window(t_game	*game)
 	mlx_destroy_display(game->mlx);
 	free(game->mlx);
 	free(game);
-	exit (0);
+	exit(0);
 }
 
 int	what_key(int keycode, void *param)
@@ -38,7 +38,7 @@ int	what_key(int keycode, void *param)
 		close_window(game);
 		exit(0);
 	}
-	else if(keycode == XK_Up)
+	else if (keycode == XK_Up)
 		move_player_up(game);
 	else if (keycode == XK_Down)
 		move_player_down(game);
@@ -48,7 +48,6 @@ int	what_key(int keycode, void *param)
 		move_player_right(game);
 	return (0);
 }
-
 
 int	main(int ac, char **av)
 {
@@ -71,8 +70,8 @@ int	main(int ac, char **av)
 	game->map_width = ft_strlen_map(game->map[1]);
 	read_xpm(game);
 	render_map(game);
-	mlx_hook(game->window, 17, 1L>>0, close_window, game);
-	mlx_hook(game->window, 2, 1L>>0, what_key, game);
+	mlx_hook(game->window, 17, 1L >> 0, close_window, game);
+	mlx_hook(game->window, 2, 1L >> 0, what_key, game);
 	mlx_loop(game->mlx);
 	return (0);
 }

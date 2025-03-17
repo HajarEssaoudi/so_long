@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 16:39:07 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/14 01:43:41 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/17 01:57:20 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	c_not_found(t_game *game)
 		}
 		i++;
 	}
-	return (free_map(game) ,1);
+	return (free_map(game), 1);
 }
 
 int	p_not_found(t_game *game)
@@ -52,7 +52,7 @@ int	p_not_found(t_game *game)
 	}
 	if (count == 1)
 		return (0);
-	return (free_map(game) ,1);
+	return (free_map(game), 1);
 }
 
 int	e_not_found(t_game *game)
@@ -74,7 +74,7 @@ int	e_not_found(t_game *game)
 	}
 	if (count == 1)
 		return (0);
-	return (free_map(game) ,1);
+	return (free_map(game), 1);
 }
 
 int	not_element(t_game *game)
@@ -86,9 +86,10 @@ int	not_element(t_game *game)
 		j = 0;
 		while (game->map[i][j])
 		{
-			if (game->map[i][j] != 'E' && game->map[i][j] != 'C' && game->map[i][j] != 'P'
-				&& game->map[i][j] != '1' && game->map[i][j] != '0' && game->map[i][j] != '\n')
-				return (free_map(game) ,1);
+			if (game->map[i][j] != 'E' && game->map[i][j] != 'C'
+				&& game->map[i][j] != 'P' && game->map[i][j] != '1'
+				&& game->map[i][j] != '0' && game->map[i][j] != '\n')
+				return (free_map(game), 1);
 			j++;
 		}
 		i++;

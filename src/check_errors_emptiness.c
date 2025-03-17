@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 01:05:24 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/16 13:21:00 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/17 01:55:40 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	is_line_empty(char *line)
 
 static int	check_last_line(char **map)
 {
-	int(i), last_index;
+	int (i), last_index;
 	i = 0;
 	while (map[i])
 		i++;

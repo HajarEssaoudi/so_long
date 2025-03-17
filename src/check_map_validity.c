@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 05:04:46 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/16 11:17:44 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/17 02:30:27 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**store_map(t_game *game)
 		return (NULL);
 	fd = open(game->map_name, O_RDONLY);
 	if (fd == -1)
-		(ft_putstr_fd("open failed\n", 2), free(game),free(map), exit(1));
+		(ft_putstr_fd("open failed\n", 2), free(game), free(map), exit(1));
 	while (i < game->map_height)
 	{
 		line = get_next_line(fd);

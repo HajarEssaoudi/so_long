@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 02:01:39 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/15 21:31:51 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/17 01:59:33 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void	print_error(int flag)
 	if (flag == 8)
 		ft_putstr_fd("Map must have exactly one exit.\n", 2);
 	if (flag == 9)
-		ft_putstr_fd("Map can only contain: C (collectible), P (player), E (exit), 1 (wall), 0 (empty).\n", 2);
+		ft_putstr_fd("Map can only contain:"
+			"C (collectible), P (player), E (exit), 1 (wall), 0 (empty).\n", 2);
 	if (flag == 10)
 		ft_putstr_fd("there is no valid path in the map.\n", 2);
 }

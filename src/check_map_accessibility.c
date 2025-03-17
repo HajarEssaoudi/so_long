@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 01:14:03 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/16 13:22:57 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/17 01:58:01 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	count_collect(char **map)
 {
 	int (i), j = 0, count = 0;
 	i = 0;
-	while(map[i])
+	while (map[i])
 	{
 		j = 0;
-		while(map[i][j])
+		while (map[i][j])
 		{
-			if (map[i][j] == 'C' || map[i][j] == 'E')
+			if (map[i][j] == 'C')
 			{
 				++count;
 			}
@@ -30,6 +30,42 @@ int	count_collect(char **map)
 		i++;
 	}
 	return (count);
+}
+
+int	check_path(char **map)
+{
+	int (i), j = 0, count = 0;
+	i = 0;
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'C' || map[i][j] == 'E')
+			{
+				ft_printf("x = %d, y = %d ==> c = %c\n", j, i, map[i][j]);
+				++count;
+			}
+			j++;
+		}
+		i++;
+	}
+	return (count);
+}
+
+void	free_map_char(char **map)
+{
+	int	i;
+
+	i = 0;
+	if (!map)
+		return ;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
 char	**duplicate_map(char **map)
@@ -48,56 +84,26 @@ char	**duplicate_map(char **map)
 	while (i < rows)
 	{
 		new_map[i] = ft_strdup_map(map[i]);
-		// if (!new_map[i])
-			// free_map(new_map);
+		if (!new_map[i])
+			free_map_char(new_map);
 		i++;
 	}
 	new_map[rows] = NULL;
 	return (new_map);
 }
 
-void	free_map_char(char **map)
-{
-	int i = 0;
-
-	if (!map)
-		return;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-}
-
-
 int	map_not_accessible(t_game *game)
 {
 	char	**map_dup;
 	int		count;
-	int		x = 0;
-	int		y = 0;
-	
+
 	map_dup = duplicate_map(game->map);
-	int i = 0, j = 0;
-	while (map_dup[i])
-	{
-		j = 0;
-		while (map_dup[i][j])
-		{
-			if (map_dup[i][j] == 'P')
-			{
-				x = j;
-				y = i;
-			}
-			j++;
-		}
-		i++;
-	}
 	count = 0;
-	flood_fill(map_dup, x, y, 'F');
-	count = count_collect(map_dup);
+	player_position(game);
+	flood_fill(map_dup, game->x, game->y, 'F');
+	count = check_path(map_dup);
 	free_map_char(map_dup);
+	ft_printf("count == %d\n", count);
 	if (count > 0)
 		return (free_map(game), 1);
 	else
