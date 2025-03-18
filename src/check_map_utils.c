@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 17:09:18 by root              #+#    #+#             */
-/*   Updated: 2025/03/17 01:53:45 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:33:54 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,9 @@ int	count_lines(t_game *game)
 
 void	flood_fill(char **tab, int x, int y, char to_fill)
 {
-	if (tab[y][x] == '1' || tab[y][x] == 'V' || tab[y][x] == 'F')
+	if (tab[y][x] == '1' || tab[y][x] == 'F')
 		return ;
-	if (tab[y][x] == 'E')
-	{
-		tab[y][x] = 'V';
-	}
-	else
-		tab[y][x] = 'F';
+	tab[y][x] = 'F';
 	flood_fill(tab, (x - 1), y, to_fill);
 	flood_fill(tab, (x + 1), y, to_fill);
 	flood_fill(tab, x, (y - 1), to_fill);

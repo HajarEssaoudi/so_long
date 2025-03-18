@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 01:14:03 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/17 01:58:01 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:34:14 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ int	check_path(char **map)
 		{
 			if (map[i][j] == 'C' || map[i][j] == 'E')
 			{
-				ft_printf("x = %d, y = %d ==> c = %c\n", j, i, map[i][j]);
-				++count;
+				count++;
 			}
 			j++;
 		}
@@ -97,13 +96,12 @@ int	map_not_accessible(t_game *game)
 	char	**map_dup;
 	int		count;
 
-	map_dup = duplicate_map(game->map);
 	count = 0;
+	map_dup = duplicate_map(game->map);
 	player_position(game);
 	flood_fill(map_dup, game->x, game->y, 'F');
 	count = check_path(map_dup);
 	free_map_char(map_dup);
-	ft_printf("count == %d\n", count);
 	if (count > 0)
 		return (free_map(game), 1);
 	else

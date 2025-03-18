@@ -1,6 +1,6 @@
 NAME = so_long
 CC = gcc
-CFLAGS = -g -Werror -Wextra -Wall
+CFLAGS = -Werror -Wextra -Wall
 
 SRC_PATH = src
 OBJ_PATH = obj
@@ -8,7 +8,7 @@ OBJ_PATH = obj
 SRC_NAME = main.c check_errors_emptiness.c check_errors_flags.c check_errors_rectangulaire.c	\
 			check_errors_walls.c check_map_utils.c check_map_validity.c gnl/get_next_line.c		\
 			gnl/get_next_line_utils.c check_errors_map_elements.c check_map_accessibility.c 	\
-			render_map.c moves.c moves_utils.c
+			render_map.c moves.c moves_utils.c moves_exit.c handle_exit.c finish_game.c
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRCS = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
 OBJS = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
@@ -16,8 +16,6 @@ OBJS = $(addprefix $(OBJ_PATH)/, $(OBJ_NAME))
 LIB1 = ./include/libft/libft.a
 LIB2 = ./include/ft_printf/libftprintf.a
 MLX = -Lmlx_linux -lmlx_Linux -L/usr/include/minilibx-linux -lXext -lX11
-
-do: all clean
 
 all: $(NAME)
 

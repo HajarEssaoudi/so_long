@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 00:34:12 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/17 02:34:58 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/18 03:36:35 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_game
 	int		map_width;
 	int		x;
 	int		y;
+	int		x_exit;
+	int		y_exit;
 	int		move;
 	int		count_collectibles;
 	void	*collectible_img;
@@ -64,6 +66,7 @@ void		free_map(t_game *game);
 void		flood_fill(char **tab, int x, int y, char to_fill);
 int			count_collect(char **map);
 void		player_position(t_game *game);
+void		exit_position(t_game *game);
 // error functions
 void		print_error(int flag);
 // check map
@@ -84,8 +87,18 @@ int			check_map_validity(t_game *game);
 void		read_xpm(t_game *game);
 void		render_map(t_game *game);
 // moves
-void		finish_game_one(t_game *game, int x, int y, int flag);
-void		finish_game_two(t_game *game, int x, int y, int flag);
+void		handle_exit_up(t_game *game, int x, int y);
+void		handle_exit_down(t_game *game, int x, int y);
+void		handle_exit_right(t_game *game, int x, int y);
+void		handle_exit_left(t_game *game, int x, int y);
+void		move_exit_up(t_game *game, int x, int y);
+void		move_exit_down(t_game *game, int x, int y);
+void		move_exit_left(t_game *game, int x, int y);
+void		move_exit_right(t_game *game, int x, int y);
+void		finish_game_up(t_game *game, int x, int y);
+void		finish_game_down(t_game *game, int x, int y);
+void		finish_game_right(t_game *game, int x, int y);
+void		finish_game_left(t_game *game, int x, int y);
 void		move_player_up(t_game *game);
 void		move_player_down(t_game *game);
 void		move_player_left(t_game *game);

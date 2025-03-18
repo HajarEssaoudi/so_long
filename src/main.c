@@ -6,7 +6,7 @@
 /*   By: hes-saou <hes-saou@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 00:32:09 by hes-saou          #+#    #+#             */
-/*   Updated: 2025/03/17 01:50:06 by hes-saou         ###   ########.fr       */
+/*   Updated: 2025/03/18 04:21:42 by hes-saou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,7 @@ int	main(int ac, char **av)
 	t_game	*game;
 
 	game = (t_game *)malloc(sizeof(t_game));
-	game->x = 0;
-	game->y = 0;
-	game->move = 0;
+	ft_memset(game, 0, sizeof(t_game));
 	if (!game)
 		return (1);
 	game->map_name = av[1];
@@ -64,6 +62,8 @@ int	main(int ac, char **av)
 		(free(game), exit(1));
 	game->map_height = count_lines(game);
 	game->map = store_map(game);
+	player_position(game);
+	exit_position(game);
 	game->count_collectibles = count_collect(game->map);
 	if (!check_map_validity(game))
 		(free(game), exit(1));
